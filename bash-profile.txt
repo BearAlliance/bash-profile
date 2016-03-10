@@ -26,20 +26,13 @@ alias redbox='cd ~/dev/bpo_redbox_spa/redbox_angular'
 #   -------------------------------
 
 #   Git Prompt
-    # if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
-      # GIT_PROMPT_THEME=Default
-      # source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
-    # fi
-    # source "$(brew --prefix)/etc/bash_completion"
-    # source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
-
-    # parse_git_branch() {
-    # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-    # }
+    parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    }
 
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1="________________________________________________________________________________\n| \h:\u \w $ ~ \n| => "
+    export PS1="________________________________________________________________________________\n| \h:\u \[\033[01;34m\]\w\[\033[0m\] \[\033[01;33m\]\$(parse_git_branch)\[\033[0m\]  \n| => "
     export PS2="| => "
 
 #   Set Paths
@@ -61,6 +54,7 @@ alias redbox='cd ~/dev/bpo_redbox_spa/redbox_angular'
 #   ------------------------------------------------------------
 #   export CLICOLOR=1
 #   export LSCOLORS=ExFxBxDxCxegedabagacad
+
 
 
 #   -----------------------------
